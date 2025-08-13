@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Historia del Liverpool</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #d3d3d3; /* Fondo gris claro */
+    color: #222;
+  }
+
+  header {
+    background: #c8102e;
+    color: white;
+    padding: 15px 20px;
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    animation: slideDownFade 0.6s ease forwards;
+  }
+
+  /* Botón de menú */
+  .menu-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 26px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  /* Menú emergente */
+  .popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 55px;
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    z-index: 100;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    min-width: 140px;
+  }
+
+  .popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .popup a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #0c0a0a;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+
+  .popup a:hover {
+    background: #f0f0f0;
+  }
+
+  /* Contenedor con imagen arriba y texto abajo */
+  .content {
+    display: flex;
+    flex-direction: column; /* Columna para imagen arriba */
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 20px;
+    max-width: 600px;
+    margin: auto;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards 0.4s;
+  }
+
+  .team-image {
+    width: 100%;
+    opacity: 0;
+    animation: fadeInImg 1s ease forwards 0.6s;
+  }
+
+  .team-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  }
+
+  .history {
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: justify;
+    opacity: 0;
+    animation: fadeInText 1s ease forwards 1s;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .content {
+      max-width: 100%;
+      padding: 20px;
+    }
+  }
+
+  /* Animaciones */
+  @keyframes slideDownFade {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInText {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  @keyframes fadeInImg {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  Historia del Liverpool
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+  <div class="popup" id="popup">
+    <a href="index.html">Inicio</a>
+    <a href="info.html">Historia</a>
+    <a href="jugador.html">Jugadores</a>
+    <a href="uni.html">Uniformes</a>
+    <a href="partidos.html">Partidos</a>
+  </div>
+</header>
+
+<div class="content">
+  <div class="team-image">
+    <img src="img5.jpg" alt="Equipo Liverpool completo" />
+  </div>
+  <div class="history">
+    <h2>Historia del Liverpool FC</h2>
+    <p>
+      El Liverpool Football Club, fundado en 1892, es uno de los equipos más icónicos y exitosos del fútbol inglés y mundial. A lo largo de su historia, ha ganado múltiples títulos nacionales e internacionales, incluyendo la Premier League, la Liga de Campeones de la UEFA y la FA Cup. El club es conocido por su apasionada afición, el emblemático estadio Anfield y su himno "You'll Never Walk Alone", que simboliza la unión y el espíritu de lucha del equipo.
+    </p>
+    <p>
+      Liverpool ha producido leyendas del fútbol como Kenny Dalglish, Steven Gerrard y Mohamed Salah, y continúa siendo un referente en el deporte gracias a su estilo de juego ofensivo y competitivo. El club representa no solo una institución deportiva sino también un símbolo cultural para la ciudad de Liverpool y sus seguidores en todo el mundo.
+    </p>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const popup = document.getElementById('popup');
+    popup.classList.toggle('show');
+  }
+
+  window.onclick = function(event) {
+    const popup = document.getElementById('popup');
+    if (!event.target.matches('.menu-btn')) {
+      popup.classList.remove('show');
+    }
+  }
+</script>
+
+</body>
+</html>

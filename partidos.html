@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Partidos del Liverpool</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #d3d3d3; /* Gris clarito */
+    text-align: center;
+  }
+
+  /* Encabezado */
+  header {
+    background: #c8102e;
+    color: white;
+    padding: 15px;
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  /* Botón menú */
+  .menu-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  /* Menú emergente */
+  .popup {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .popup a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+  }
+
+  .popup a:hover {
+    background: #f0f0f0;
+  }
+
+  /* "Tabla" oculta visualmente */
+  .match-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .match-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: left;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Retraso animación para tarjetas */
+  .match-card:nth-child(1) { animation-delay: 0.1s; }
+  .match-card:nth-child(2) { animation-delay: 0.2s; }
+  .match-card:nth-child(3) { animation-delay: 0.3s; }
+  .match-card:nth-child(4) { animation-delay: 0.4s; }
+  .match-card:nth-child(5) { animation-delay: 0.5s; }
+  .match-card:nth-child(6) { animation-delay: 0.6s; }
+  .match-card:nth-child(7) { animation-delay: 0.7s; }
+  .match-card:nth-child(8) { animation-delay: 0.8s; }
+  .match-card:nth-child(9) { animation-delay: 0.9s; }
+  .match-card:nth-child(10) { animation-delay: 1s; }
+  .match-card:nth-child(11) { animation-delay: 1.1s; }
+
+  /* Efecto hover */
+  .match-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+  }
+
+  .match-type {
+    font-weight: bold;
+    color: #c8102e;
+    margin-bottom: 5px;
+  }
+
+  .match-info {
+    font-size: 14px;
+    color: #333;
+    margin: 3px 0;
+  }
+
+  /* Perdidos con color diferente */
+  .match-type.lost {
+    color: #555;
+  }
+
+  /* Animación fadeInUp */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  Partidos del Liverpool
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+  <div class="popup" id="popup">
+    <a href="index.html">Inicio</a>
+    <a href="info.html">Historia</a>
+    <a href="jugador.html">Jugadores</a>
+    <a href="uni.html">Uniformes</a>
+    <a href="partidos.html">Partidos</a>
+  </div>
+</header>
+
+<!-- Contenedor de partidos -->
+<div class="match-container">
+
+  <!-- Partidos Ganados -->
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 12/03/2025</div>
+    <div class="match-info">Rival: Manchester United</div>
+    <div class="match-info">Marcador: 3 - 1</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 05/02/2025</div>
+    <div class="match-info">Rival: Chelsea</div>
+    <div class="match-info">Marcador: 2 - 0</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 21/01/2025</div>
+    <div class="match-info">Rival: Arsenal</div>
+    <div class="match-info">Marcador: 4 - 2</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 10/12/2024</div>
+    <div class="match-info">Rival: Tottenham</div>
+    <div class="match-info">Marcador: 2 - 1</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 30/11/2024</div>
+    <div class="match-info">Rival: Everton</div>
+    <div class="match-info">Marcador: 3 - 0</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type">Ganado</div>
+    <div class="match-info">Fecha: 18/10/2024</div>
+    <div class="match-info">Rival: Newcastle United</div>
+    <div class="match-info">Marcador: 1 - 0</div>
+  </div>
+
+  <!-- Partidos Perdidos -->
+  <div class="match-card">
+    <div class="match-type lost">Perdido</div>
+    <div class="match-info">Fecha: 14/05/2025</div>
+    <div class="match-info">Rival: Real Madrid</div>
+    <div class="match-info">Marcador: 1 - 3</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type lost">Perdido</div>
+    <div class="match-info">Fecha: 30/04/2025</div>
+    <div class="match-info">Rival: Manchester City</div>
+    <div class="match-info">Marcador: 0 - 2</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type lost">Perdido</div>
+    <div class="match-info">Fecha: 18/03/2025</div>
+    <div class="match-info">Rival: Brighton</div>
+    <div class="match-info">Marcador: 1 - 2</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type lost">Perdido</div>
+    <div class="match-info">Fecha: 22/02/2025</div>
+    <div class="match-info">Rival: West Ham United</div>
+    <div class="match-info">Marcador: 0 - 1</div>
+  </div>
+
+  <div class="match-card">
+    <div class="match-type lost">Perdido</div>
+    <div class="match-info">Fecha: 05/01/2025</div>
+    <div class="match-info">Rival: Leeds United</div>
+    <div class="match-info">Marcador: 1 - 2</div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const popup = document.getElementById('popup');
+    popup.classList.toggle('show');
+  }
+
+  window.onclick = function(event) {
+    const popup = document.getElementById('popup');
+    if (!event.target.matches('.menu-btn')) {
+      popup.classList.remove('show');
+    }
+  }
+</script>
+
+</body>
+</html>

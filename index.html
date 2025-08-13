@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liverpool de Fútbol</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #d3d3d3; /* Gris bajito */
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  /* Encabezado */
+  header {
+    background: #c8102e; /* Rojo Liverpool */
+    color: white;
+    padding: 15px;
+    position: relative;
+    font-size: 20px;
+    font-weight: bold;
+    animation: slideDown 0.8s ease;
+  }
+
+  /* Botón de tres puntos */
+  .menu-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: rgb(247, 237, 237);
+  }
+
+  /* Cuadro blanco emergente con animación */
+  .popup {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .popup a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+    border-radius: 4px;
+  }
+
+  .popup a:hover {
+    background: #dda7a7;
+  }
+
+  /* Imagen con animación */
+  .main-image {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    border-radius: 8px;
+    animation: fadeIn 1.5s ease;
+  }
+
+  /* Frase con movimiento desde abajo */
+  .phrase {
+    margin: 20px auto;
+    font-size: 18px;
+    color: #333;
+    max-width: 600px;
+    padding: 10px;
+    animation: slideUp 1s ease;
+  }
+
+  /* Animaciones */
+  @keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  Liverpool de Fútbol
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+  <div class="popup" id="popup">
+    <a href="index.html">Inicio</a>
+    <a href="info.html">Historia</a>
+    <a href="jugador.html">Jugadores</a>
+    <a href="uni.html">Uniformes</a>
+    <a href="partidos.html">Partidos</a>
+  </div>
+</header>
+
+<!-- Imagen principal -->
+<img src="por.jpg" alt="Liverpool" class="main-image">
+
+<script>
+  function toggleMenu() {
+    const popup = document.getElementById('popup');
+    popup.classList.toggle('show');
+  }
+
+  // Cerrar si se hace clic fuera
+  window.onclick = function(event) {
+    const popup = document.getElementById('popup');
+    if (!event.target.matches('.menu-btn')) {
+      popup.classList.remove('show');
+    }
+  }
+</script>
+
+</body>
+</html>
